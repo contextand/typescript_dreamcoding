@@ -53,7 +53,7 @@
 
   function throwError(message: string): never {
     // message -> server (log)
-    throw new Error(message);
+    // throw new Error(message);
     while (true) {
       // 빙글빙글 돌 경우?
     }
