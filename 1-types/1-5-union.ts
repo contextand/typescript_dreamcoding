@@ -32,4 +32,8 @@
       },
     };
   }
+
+  // printLoginState(state)
+  // success -> body
+  // fail -> reason
 }
