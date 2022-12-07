@@ -1,25 +1,15 @@
 {
-  // union types
-  type Direction = "left" | "right" | "up" | "down";
-  function move(direction: Direction) {
-    console.log(direction);
-  }
-  move("down");
-  // 함수 호출시 문자열 작성하면, 함수가 받을 수 있는 4가지 타입 자동으로 보여줌
-  // 이것 또는 이것 또는 이것..
-
-  type TileSize = 8 | 16 | 32;
-  const tile: TileSize = 32;
-
-  // 하나의 사이즈만 적어야 한다. 타입을 통해 들어갈 값 까지 지정하는 느낌
+  //차별화할 수 있는, 구분할 수 있는?
 
   // function: login -> success, fail
   type SuccessState = {
+    result: "success"; // 문자열 지정
     response: {
       body: string;
     };
   };
   type FailState = {
+    result: "fail"; // 문자열 지정
     reason: string;
   };
 
@@ -27,6 +17,7 @@
 
   function login(): LoginState {
     return {
+      result: "success", // 여기서도 이렇게 선택해야주어야 함
       response: {
         body: "logged in!",
       },
@@ -38,10 +29,15 @@
   // fail -> reason
 
   function printLoginState(state: LoginState) {
-    if ("response" in state) {
+    // state.result 로 접근 가능, 성공이든 실패든
+
+    if (state.result === "success") {
+      // 이렇게 성공으로, 직관적으로 작성 가능
       console.log(`${state.response.body}`);
     } else {
       console.log(`${state.reason}`);
     }
   }
+
+  // 어떤 케이스든 공통적인 프로퍼티를 가지고 있으므로서 구분하기 쉽게 만든다!. 이게 포인트!
 }
