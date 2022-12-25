@@ -10,7 +10,14 @@
     if (coffeeBeans < shots * BEANS_GRAMM_PER_SHOT) {
       throw new Error("not enough coffee beans!");
     }
-
-    // return {};
+    coffeeBeans -= shots * BEANS_GRAMM_PER_SHOT;
+    return {
+      shots,
+      hasMilk: false,
+    };
   }
+
+  coffeeBeans += 3 * BEANS_GRAMM_PER_SHOT;
+  const coffee = makeCoffee(2);
+  console.log(coffee);
 }
